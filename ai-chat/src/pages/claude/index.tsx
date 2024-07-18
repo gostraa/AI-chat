@@ -1,14 +1,20 @@
+import React, { useState, useEffect } from "react";
 import ChatInput from "@/components/ChatInput";
 import ChatMessages from "@/components/ChatMessages";
 import AIToggleSwitch from "@/components/toggleSwitch";
-
-import React, { useState } from "react";
 
 const ClaudePage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<
     { role: string; content: { type: string; text: string } }[]
   >([]);
+
+  useEffect(() => {
+    const storedMessages = localStorage.getItem("chatMessages");
+    if (storedMessages) {
+      setMessages(JSON.parse(storedMessages));
+    }
+  }, []);
 
   const sendMessage = async (message: string) => {
     const newMessage = {
@@ -28,7 +34,9 @@ const ClaudePage: React.FC = () => {
         },
         body: JSON.stringify({ message }),
       });
+
       setIsLoading(false);
+
       if (!res.ok) {
         throw new Error("Failed to send message");
       }
@@ -40,6 +48,11 @@ const ClaudePage: React.FC = () => {
       };
 
       setMessages((prevMessages) => [...prevMessages, assistantMessage]);
+
+      localStorage.setItem(
+        "chatMessages",
+        JSON.stringify([...messages, newMessage, assistantMessage])
+      );
     } catch (error) {
       setIsLoading(false);
       console.error("Error sending message:", error);
