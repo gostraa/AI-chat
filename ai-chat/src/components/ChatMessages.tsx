@@ -8,8 +8,8 @@ interface ChatMessagesProps {
 
 const ChatMessages: React.FC<ChatMessagesProps> = ({ messages, isLoading }) => {
   return (
-    <div className="flex-grow p-6">
-      <div className="flex flex-col space-y-4">
+    <div className="flex-grow p-6 ">
+      <div className="flex flex-col space-y-4 max-h-[700px] overflow-auto ">
         {messages?.map((message: any, index) => (
           <div
             key={index}

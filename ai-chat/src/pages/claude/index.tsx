@@ -1,5 +1,6 @@
 import ChatInput from "@/components/ChatInput";
 import ChatMessages from "@/components/ChatMessages";
+import AIToggleSwitch from "@/components/toggleSwitch";
 
 import React, { useState } from "react";
 
@@ -48,9 +49,11 @@ const ClaudePage: React.FC = () => {
   return (
     <div className="container mx-auto max-w-[700px]">
       <div className="flex flex-col h-screen bg-gray-900">
+        <AIToggleSwitch />
         <h1 className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text text-center py-3 font-bold text-6xl">
           Chat with Claude
         </h1>
+
         <ChatMessages messages={messages} isLoading={isLoading} />
         <ChatInput onSendMessage={sendMessage} />
       </div>

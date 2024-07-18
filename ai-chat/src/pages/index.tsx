@@ -8,7 +8,7 @@ export default function Home() {
           Welcome to the AI Chat-Bot
         </h1>
         <p className="bg-gradient-to-l from-green-500 to-purple-500 text-transparent bg-clip-text text-center py-20 font-medium text-3xl ">
-          choose an assistant
+          select an assistant
         </p>
         <div className="flex gap-20 justify-center">
           <Link
