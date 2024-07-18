@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import axios from "axios";
 import LoadingIndicator from "@/components/LoadingIndicator";
 import AIToggleSwitch from "@/components/toggleSwitch";
+import GPTSideBar from "@/components/GPTSideBar";
+import axios from "axios";
 
 export default function ChatGPTPage() {
   const [inputValue, setInputValue] = useState("");
@@ -22,20 +23,17 @@ export default function ChatGPTPage() {
 
     setInputValue("");
   };
-  const sendMessage = (message: any) => {
+  const sendMessage = async (message: any) => {
     const url = "https://api.openai.com/v1/chat/completions";
     const headers = {
       "Content-type": "application/json",
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
     };
-
     const data = {
       model: "gpt-3.5-turbo-0125",
       messages: [{ role: "user", content: message }],
     };
-
     setIsLoading(true);
-
     axios
       .post(url, data, { headers: headers })
       .then((response) => {
@@ -53,10 +51,11 @@ export default function ChatGPTPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-[700px]">
-      <div className="flex flex-col h-screen bg-gray-900">
+    <div className="flex ">
+      <GPTSideBar />
+      <div className="flex flex-col h-screen w-screen bg-gray-900">
         <AIToggleSwitch />
-        <h1 className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text text-center py-3 font-bold text-6xl">
+        <h1 className="bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text text-center py-3 font-bold text-4xl">
           ChatGPT
         </h1>
 

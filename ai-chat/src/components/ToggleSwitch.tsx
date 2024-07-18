@@ -13,7 +13,7 @@ const AIToggleSwitch = () => {
   };
 
   return (
-    <div className=" overflow-hidden px-[300px] py-[50px]">
+    <div className=" overflow-hidden py-[50px] flex justify-center">
       <input
         type="checkbox"
         id="aiToggle"
