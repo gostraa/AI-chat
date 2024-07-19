@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import LoadingIndicator from "@/components/LoadingIndicator";
-import AIToggleSwitch from "@/components/toggleSwitch";
+
 import GPTSideBar from "@/components/GPTSideBar";
 import axios from "axios";
+import AIToggleSwitch from "@/components/ToggleSwitch";
 
 export default function ChatGPTPage() {
   const [inputValue, setInputValue] = useState("");

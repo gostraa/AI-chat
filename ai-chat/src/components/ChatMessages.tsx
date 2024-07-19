@@ -1,8 +1,9 @@
 import React from "react";
 import LoadingIndicator from "./LoadingIndicator";
+import { Message } from "@/types/types";
 
 interface ChatMessagesProps {
-  messages: { role: string; content: { type: string; text: string } }[];
+  messages: Message[];
   isLoading: boolean;
 }
 
